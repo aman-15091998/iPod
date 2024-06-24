@@ -8,19 +8,14 @@ class App extends React.Component {
   {
     super();
     this.state={
-      menuPos:0,
+      menuPos:0,     //for pointing the current option in the current menu
       currentScreen:"home",
-      options:["cover", "music", "games", "settings", "home"],
-      allowMenuChange:true,
-      insideMenu:""
+      options:["cover", "music", "games", "settings", "home"],    //to store the menu options of the current screen
     }
   }
   
   setOptions=(options)=>{
     this.setState({options})
-  }
-  toggleMenuChange=()=>{
-    this.setState({allowMenuChange:(this.state.allowMenuChange==false?(!this.state.allowMenuChange):(this.state.allowMenuChange))});
   }
   changeScreen=(pos=this.state.menuPos)=>{
     switch(pos){
@@ -49,9 +44,8 @@ class App extends React.Component {
       <>
         <h1 className={styles.centerText}>iPod</h1>
         <div className={styles.body}>
-          <Screen menuPos={this.state.menuPos} currentScreen={this.state.currentScreen} setOptions={this.setOptions} changeScreen={this.changeScreen} />
-          <Controls changeScreen={this.changeScreen} incrementSelection={this.incrementSelection} allowMenuChange={this.state.allowMenuChange} toggleMenuChange={this.toggleMenuChange} options={this.state.options}/>
-          <span>{this.state.xMap} {this.state.yMap}</span>
+          <Screen menuPos={this.state.menuPos} currentScreen={this.state.currentScreen} setOptions={this.setOptions} />
+          <Controls changeScreen={this.changeScreen} incrementSelection={this.incrementSelection} options={this.state.options} />
         </div>
       </>
     );

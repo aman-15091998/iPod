@@ -5,7 +5,13 @@ export class Games extends React.Component{
     constructor(props){
         super(props);
     }
-
+    componentDidMount(){
+        this.props.setOptions(["home"])
+    }
+    componentWillUnmount(){
+        this.props.setOptions(["cover", "music", "games", "settings", "home"]);
+        
+    }
     render(){
         return <>
             <div className={styles.gameWallpaper}>

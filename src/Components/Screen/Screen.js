@@ -9,15 +9,15 @@ export class Screen extends React.Component{
     constructor(props){
         super(props);
     }
-
+    // Switching the screen based on currentScreen property
     render(){
-        const {currentScreen, setOptions, menuPos, changeScreen}=this.props;
+        const {currentScreen, setOptions, menuPos}=this.props;
         return (
             <>
-                <div className={styles.screen}>
-                    {currentScreen=="home"?(<Home menuPos={menuPos}/>):
-                    (currentScreen=="cover"?(<Cover />):(currentScreen=="games"?(<Games/>):
-                    (currentScreen=="settings"?(<Settings/>):(<Music menuPos={menuPos} setOptions={setOptions} currentScreen={currentScreen}/>))))}
+                <div className={styles.screen}>    
+                    {currentScreen=="home"?(<Home menuPos={menuPos }/>):
+                    (currentScreen=="cover"?(<Cover setOptions={setOptions}/>):(currentScreen=="games"?(<Games setOptions={setOptions}/>):
+                    (currentScreen=="settings"?(<Settings setOptions={setOptions}/>):(<Music menuPos={menuPos} setOptions={setOptions} currentScreen={currentScreen}/>))))}
                 </div>
             </>
         )
